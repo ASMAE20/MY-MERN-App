@@ -1,0 +1,42 @@
+version: '3.7'
+
+services:
+  mongodb-service:
+    image: localhost:7000/mongo:latest
+    container_name: mongodb-service
+    ports:
+      - 27017:27017
+    volumes:
+      - data:/data/db
+    networks:
+      - mongo_network
+
+  backend:
+    image : localhost:7000/asmaeel/back_image:latest
+    container_name: backend
+    ports:
+      - 1000:5000
+    depends_on:
+      - mongodb-service
+    networks:
+      - mongo_network
+    
+    
+  frontend:
+    image : localhost:7000/asmaeel/front_image:latest
+    container_name: frontend
+    ports:
+      - 3000:80
+    depends_on:
+      - backend
+    networks:
+      - mongo_network
+ 
+volumes:
+  data:
+    driver: local
+
+networks:
+  mongo_network:
+   driver: bridge
+

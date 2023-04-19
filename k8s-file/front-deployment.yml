@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  namespace: exam
+spec:
+  selector:
+    matchLabels:
+      app: frontend-deployment
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: frontend-deployment
+    spec:
+      containers:
+      - name: frontend-deployment
+        image: asmaeel/front_image:v2
+        ports:
+        - containerPort: 80
+        env:
+        - name: CLOUDL_SERVER
+          valueFrom:
+            configMapKeyRef:
+              name: exam-config
+              key: CLOUDL_SERVER
+        - name : apiUrl
+          valueFrom: 
+            configMapKeyRef:
+              name: exam-config
+              key: apiUrl
+        livenessProbe:
+          httpGet:
+              port: 80
+              path: /alive
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 2
+        readinessProbe:
+          httpGet:
+            scheme: HTTPS
+            path: /index.html
+            port: 8443
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        

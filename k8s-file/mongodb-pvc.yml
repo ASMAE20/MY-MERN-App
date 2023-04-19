@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mongodb-pvc
+  namespace: exam
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  volumeName: mongodb-data-volume
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 1Gi

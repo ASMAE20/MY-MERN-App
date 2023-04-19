@@ -1,0 +1,8 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: do-block-storage
+  namespace: logging
+provisioner: digitalocean.com/do-block-storage
+parameters:
+  size: 10Gi # adjust the size to fit your needs

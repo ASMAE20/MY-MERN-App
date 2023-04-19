@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: exam-config
+  namespace: exam
+data:
+  CLOUDL_SERVER: localhost
+  apiUrl: http://localhost:5000
+  
+ 

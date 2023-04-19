@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  namespace: exam
+spec:
+  selector:
+    matchLabels:
+      app: backend-deployment
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: backend-deployment
+    spec:
+      containers:
+        - name: backend-deployment
+          image: asmaeel/back_image:latest
+          ports:
+            - containerPort: 5000
+          livenessProbe:
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            httpGet:
+              scheme: HTTP
+              path: /healthz
+              port: 5000
+              
+  
