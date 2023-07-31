@@ -1,9 +1,11 @@
 # 🚀 Welcome to the MERN Stack Web Application - Docker & Kubernetes Deployment Guide 🐳☸️
 
 ## Description : 
-This project consists of a 3-tier web application developed using the MERN stack (MongoDB, Express, React, Node.js).We use Docker to create containers for the MongoDB database and the frontend and backend parts of the application. Then we  write Dockerfiles for each part and followed best practices for containerization. And using Docker Compose to deploy the entire application and set up a private Docker image registry.
+This project consists of a 3-tier web application developed using the MERN stack (MongoDB, Express, React, Node.js). We utilize Docker to create containers for the MongoDB database, as well as the frontend and backend components of the application. To achieve this, we write Dockerfiles for each part and follow best practices for containerization. Additionally, we use Docker Compose to deploy the entire application and set up a private Docker image registry.
 
-In the second part of the project,we will create Kubernetes manifests to deploy the application in a Kubernetes cluster, set up various probes, and created an Ingress to access the application. we also implemente monitoring and logging using Prometheus, Grafana, and the EFK stack.
+In the second part of the project, our focus is on deploying the application in a Kubernetes cluster. For this purpose, we create Kubernetes manifests to define and manage the application's resources within the cluster. We also set up various probes to monitor the health of the application and implement an Ingress to provide external access to the application.
+
+Furthermore, we enhance the application's observability by implementing monitoring and logging. We utilize Prometheus and Grafana for monitoring various metrics and performance data, while the EFK stack (Elasticsearch, Fluentd, Kibana) is employed for log aggregation and analysis.
 
 ## Prerequisites
 Before diving into the project, make sure you have the following tools installed:
@@ -16,7 +18,7 @@ Before diving into the project, make sure you have the following tools installed
 To containerize the MongoDB database, we'll use Docker and make the storage persistent. by executing this command :
 
 ```shell
-docker run –d --name mongodb-service –v mongo:/data/db –p 27017:27017 mongo:5.0
+docker run –d --name mongodb-service –v mongo:/data/db –p 27017:27017 mongo
 ```
 ### 2. Docker Network Creation
 We'll create a Docker network using an appropriate driver and connect the mongodb-service container to it.
@@ -60,7 +62,7 @@ Instead of executing all these commands, you can simply apply the Docker Compose
 ```shell
 docker compose up
 ```
-Please remember that 'docker-compose-app' uses an image from a private registry, while the 'docker-compose' file uses an image from a public repository.
+Please remember that 'docker-compose-app' file uses an image from a private registry, while the 'docker-compose' file uses an image from a public repository.
 
 ##  Part 2: Kubernetes Deployment
 All the necessary Kubernetes YAML files (manifests) to deploy the application within a Kubernetes cluster under the namespace 'exam' can be applied by using the following command:
