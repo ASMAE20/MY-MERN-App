@@ -8,4 +8,9 @@ In the second part of the project,we will create Kubernetes manifests to deploy 
 ## Part 1: Dockerizing the Application
 
 ### 1. MongoDB Containerization
+To containerize the MongoDB database, we'll use Docker and make the storage persistent. by executing this command :
+
+```shell
+docker run –d --name mongodb-service –v mongo:/data/db –p 27017:27017 mongo:5.0
+```
 
