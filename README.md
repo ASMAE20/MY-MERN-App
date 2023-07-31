@@ -13,4 +13,12 @@ To containerize the MongoDB database, we'll use Docker and make the storage pers
 ```shell
 docker run –d --name mongodb-service –v mongo:/data/db –p 27017:27017 mongo:5.0
 ```
+### 2. Docker Network Creation
+We'll create a Docker network using an appropriate driver and connect the mongodb-service container to it.
+```shell
+docker network create –-driver bridge <network_name>
+docker network connect <network_name> mongodb-service
+```
+Thank you for going through this comprehensive guide for deploying the MERN Stack Web Application using Docker and Kubernetes. We hope you find it helpful! If you encounter any issues or have questions, feel free to reach out or raise an issue in the respective repositories.
 
+Happy Deploying! 😄🚀
