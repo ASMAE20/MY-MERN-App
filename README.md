@@ -5,6 +5,11 @@ This project consists of a 3-tier web application developed using the MERN stack
 
 In the second part of the project,we will create Kubernetes manifests to deploy the application in a Kubernetes cluster, set up various probes, and created an Ingress to access the application. we also implemente monitoring and logging using Prometheus, Grafana, and the EFK stack.
 
+## Prerequisites
+Before diving into the project, make sure you have the following tools installed:
+* Docker
+* Kubernetes (e.g., Minikube, MicroK8s)
+  
 ## Part 1: Dockerizing the Application
 
 ### 1. MongoDB Containerization
