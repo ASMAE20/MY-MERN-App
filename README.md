@@ -24,6 +24,47 @@ We'll create a Docker network using an appropriate driver and connect the mongod
 docker network create –-driver bridge <network_name>
 docker network connect <network_name> mongodb-service
 ```
-Thank you for going through this comprehensive guide for deploying the MERN Stack Web Application using Docker and Kubernetes. We hope you find it helpful! If you encounter any issues or have questions, feel free to reach out or raise an issue in the respective repositories.
+### 3.Docker Commands for all parts of app 
+* Create a Dockerfile for all parts of the application. This file will define the necessary steps to build the backend image:
+```shell
+docker build -t <image name > .
+```
+To follow the best practices used in the creation of Dockerfiles, you can refer to this post: : https://www.linkedin.com/posts/asmae-elazrak_docker-devops-dockerimage-activity-7073970892988370944-Kqyk?utm_source=share&utm_medium=member_desktop
 
+* Scan the image for vulnerabilities:
+```shell
+docker scan  <image name >
+```
+
+*  Publish the image to Docker Hub:
+```shell
+docker login
+docker tag <image name> <docker_hub_username>/<image name>:<tag>
+docker push <docker_hub_username>/<image name>:<tag>
+```
+*  Instantiate the image as a local container named backend, sharing the same network with the MongoDB container.:
+```shell
+docker run -d --name backend --network <network_name> <image name>
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Thank you for going through this comprehensive guide for deploying the MERN Stack Web Application using Docker and Kubernetes. We hope you find it helpful! If you encounter any issues or have questions, feel free to reach out or raise an issue in the respective repositories.
 Happy Deploying! 😄🚀
